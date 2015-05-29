@@ -1,0 +1,8 @@
+= link_to 'Off Network', vman_off_path
+%br
+= link_to 'On Network', vman_on_path
+%br
+- if flash[:notice]
+  %p= flash[:notice]
+- else
+  %p= flash[:notice]
