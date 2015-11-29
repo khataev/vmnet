@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -6,6 +7,13 @@ Rails.application.routes.draw do
 
   get '/vman/off', :to => 'vman#off'
   get '/vman/on', :to => 'vman#on'
+
+  #resources :currencies
+  get '/currencies', :to => 'currencies#index', as: 'currencies'
+  get '/currencies/:id', :to => 'currencies#index', as: 'currency_rate'
+
+  get '/ilya', :to => 'ilya#index', as: 'ilya'
+  #match 'rates/:id' => 'rates#show', via: :get, as: 'show_rate'
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

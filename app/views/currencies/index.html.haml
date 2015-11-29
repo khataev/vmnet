@@ -1,0 +1,7 @@
+= form_tag currencies_path, method: :get, :id => 'currency_form' do 
+	= collection_select(:currency, :id, @currencies, :id, :name, {prompt: "Выберите валюту"})
+	-#= select :currency, :id, @currencies.collect { |c| [c. name, c.id]}
+	%br
+	= label_tag 'Курс:' 
+	= @rate
+	%br
