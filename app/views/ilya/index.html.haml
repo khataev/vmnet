@@ -1,5 +1,66 @@
-%h1 Исходный размер Илюшиного долга на дату #{@base_date}, курс #{@base_rate}: #{@base_debt_str}
+.container-fluid
+  .row
+    .col-xs-12.header.text-center Размер Илюшиного долга
+  .row
+    .col-xs-12.top-buffer
+  .row
+    .col-xs-12
+      %table.table.table-striped
+        %tr
+          %th
+          %th Дата
+          %th RUR
+          %th EUR
+          %th USD
+        %tr
+          %td Исходный
+          %td 
+            = @base_date
+          %td
+            = @base_debt_str
+          %td
+            = @eur
+          %td
+            = @usd
+        %tr
+          %td Текущий
+          %td
+            = @today_date
+          %td
+            = @cur_debt_str
+          %td
+          %td
+-#
+  .row
+    .col-xs-4.header 
+    .col-xs-2.header Дата
+    .col-xs-2.header RUR
+    .col-xs-2.header EUR
+    .col-xs-2.header USD
+  .row
+    .col-xs-4.text-right Исходный 
+    .col-xs-2 
+      = @base_date
+    .col-xs-2 
+      = @base_debt_str
+    .col-xs-2
+      = @eur
+    .col-xs-2 
+      = @usd
+  .row
+    .col-xs-4.text-right Текущий
+    .col-xs-2 
+      = @today_date
+    .col-xs-2 
+      = @cur_debt_str
+    .col-xs-2
+    .col-xs-2 
 
-%h1 Текущий размер долга при курсе #{@today_rate}: #{@cur_debt_str}
+
+
+-#
+  %h1 Исходный размер Илюшиного долга на дату #{@base_date}, курс #{@base_rate}: #{@base_debt_str}
+  %h1 Текущий размер долга при курсе #{@today_rate}: #{@cur_debt_str}
+
 
 
