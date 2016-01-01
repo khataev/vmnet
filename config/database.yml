@@ -10,9 +10,9 @@ development:
   timeout: 5000
   database: db/development.sqlite3
 
-production:
-    adapter: mysql2
-    host: mysql65.1gb.ru
-    database: gb_wpkhataev
-    username: gb_wpkhataev
-    password: ba534f6a4tyu
+#production:
+#    adapter: mysql2
+#    host: mysql65.1gb.ru
+#    database: gb_wpkhataev
+#    username: gb_wpkhataev
+#    password: ba534f6a4tyu
