@@ -41,7 +41,10 @@ gem 'nokogiri'
 # gem 'capistrano-rails', group: :development
 
 # Access an IRB console on exception pages or by using <%= console %> in views
-gem 'web-console', '~> 2.0'
+group :development
+	gem 'web-console', '~> 2.0'
+end
+
 gem 'net-ping'
 gem 'whenever', require: false
 gem 'responders'
