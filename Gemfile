@@ -42,10 +42,9 @@ gem 'nokogiri'
 
 # Access an IRB console on exception pages or by using <%= console %> in views
 gem 'web-console', '~> 2.0'
-
 gem 'net-ping'
-
 gem 'whenever', require: false
+gem 'responders'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

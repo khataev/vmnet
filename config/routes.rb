@@ -15,6 +15,15 @@ Rails.application.routes.draw do
   get '/ilya', :to => 'ilya#index', as: 'ilya'
   #match 'rates/:id' => 'rates#show', via: :get, as: 'show_rate'
 
+  # API
+  namespace :api do
+    namespace :v1 do
+      resource :rates do
+        get :usd
+      end
+    end
+  end
+
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
+require 'date'
 
 # Оболочка над API ЦБ РФ: http://www.cbr.ru/scripts/Root.asp?PrtId=SXML
 class Currency
@@ -7,7 +8,7 @@ class Currency
 	@@query   = URI.encode_www_form("d" => "0")
 	@@address = URI("#@@baseurl?#@@query")
 	@@list = nil
-
+	@@rates = nil
 	
 
 	def self.all
@@ -17,6 +18,7 @@ class Currency
 
 	def self.load
 		@@list = []
+		@@rates = {}
 		doc = Nokogiri::XML(open(@@address)) #{|f| p f.content_type, f.charset, f.read.encoding }
 		doc.encoding = "UTF-8"
 		doc.xpath("//Valuta/Item").each { |item|
@@ -32,7 +34,7 @@ class Currency
 		#}
 	end
 
-	def rate(date)		
+	def rate_req(date)		
 		baseurl = 'http://www.cbr.ru/scripts/XML_daily.asp' << (date.nil? ? '' : date.strftime('?date_req=%d/%m/%Y') )
 		address = URI("#{baseurl}")
 		list = []
@@ -46,6 +48,17 @@ class Currency
 		#	res = 1 if a == @id.to_s
 		#	puts "'#{a}', '#@id', '#{res}'"
 		#}
+		doc
+	end
+
+	def rate(date)
+		key = (date.nil? ? DateTime.now.to_date : date).to_s.to_sym
+		if @@rates.has_key? key 
+			doc = @@rates[key] 
+		else 
+			doc = rate_req(date)
+			@@rates[key] = doc
+		end	
 
 		rate_node = doc.xpath("//ValCurs/Valute").select{ |item|
 			item.xpath("@ID").text == @id
