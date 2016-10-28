@@ -25,7 +25,5 @@ module Vmnet
 
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
-    config.web_console.whitelisted_ips = '192.168.1.100'
-    # config.web_console.development_only = false
   end
 end
