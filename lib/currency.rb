@@ -37,7 +37,7 @@ class Currency
 	def rate_req(date)		
 		baseurl = 'http://www.cbr.ru/scripts/XML_daily.asp' << (date.nil? ? '' : date.strftime('?date_req=%d/%m/%Y') )
 		address = URI("#{baseurl}")
-		list = []
+
 		doc = Nokogiri::XML(open(address))
 
 		doc.encoding = "UTF-8"
@@ -52,17 +52,20 @@ class Currency
 	end
 
 	def rate(date)
-		key = (date.nil? ? DateTime.now.to_date : date).to_s.to_sym
+		date = date.nil? ? DateTime.now.to_date : date
+    key = date.to_s.to_sym
 		if @@rates.has_key? key 
-			doc = @@rates[key] 
-		else 
+			doc = @@rates[key]
+    elsif row = RatesHistory.find_by_date(date)
+      doc = Nokogiri::XML(row.rates)
+      @@rates[key] = doc
+		else
 			doc = rate_req(date)
 			@@rates[key] = doc
+      RatesHistory.create!(date: date, rates: doc)
 		end	
 
-		rate_node = doc.xpath("//ValCurs/Valute").select{ |item|
-			item.xpath("@ID").text == @id
-		}.first
+		rate_node = doc.xpath("//ValCurs/Valute").select { |item| item.xpath("@ID").text == @id }.first
 		#puts rate_node
 		(rate_node.search('Value').text.sub(',','.').to_f / rate_node.search('Nominal').text.to_f).round(4) unless rate_node.nil?
 
