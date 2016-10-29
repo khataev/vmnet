@@ -95,7 +95,6 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.9.0)
     multi_json (1.12.1)
-    mysql2 (0.4.4)
     net-ping (2.0.1)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
@@ -199,7 +198,6 @@ DEPENDENCIES
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails
-  mysql2
   net-ping
   nokogiri
   pg
