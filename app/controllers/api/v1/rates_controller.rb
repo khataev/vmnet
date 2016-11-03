@@ -11,11 +11,13 @@ class Api::V1::RatesController < ApplicationController
 	@@date_format = '%Y%m%d'
 
 	def usd
-		ans = {}
+		ans = {
+			rates: {}
+		}
 		if @start_date && @end_date
 			ans.merge!({start_date: @start_date, end_date: @end_date})
 			@start_date.upto(@end_date) do |day|
-				ans[day.to_s] = usdcur.rate(day)
+				ans[:rates][day.to_s] = usdcur.rate(day)
 			end
 		else
 			ans[:error] = "Error parsing start or end date"
