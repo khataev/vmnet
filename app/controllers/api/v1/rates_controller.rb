@@ -1,6 +1,7 @@
 require 'date'
 
 class Api::V1::RatesController < ApplicationController
+	protect_from_forgery except: :usd
 	respond_to :json
 
 	before_action :init
@@ -23,7 +24,7 @@ class Api::V1::RatesController < ApplicationController
 		ans[:error] = "Error geting data from CBR service" unless @currencies
 
 		# ans = { rate: usdcur.rate(nil), start_date: @start_date, end_date: @end_date }
-		respond_with ans
+		respond_with ans, callback: params[:callback]
 	end
 
 	private
