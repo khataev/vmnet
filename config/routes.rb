@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get '/currencies', :to => 'currencies#index', as: 'currencies'
   get '/currencies/:id', :to => 'currencies#index', as: 'currency_rate'
 
+  # open positions
+  resources :open_positions, only: :show, param: :date
+
   get '/ilya', :to => 'ilya#index', as: 'ilya'
   #match 'rates/:id' => 'rates#show', via: :get, as: 'show_rate'
 

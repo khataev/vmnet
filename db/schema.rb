@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161029174251) do
+ActiveRecord::Schema.define(version: 20161109191409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "positions_histories", force: :cascade do |t|
+    t.date "date"
+    t.text "positions"
+  end
+
+  add_index "positions_histories", ["date"], name: "index_positions_histories_on_date", using: :btree
 
   create_table "rates_histories", force: :cascade do |t|
     t.date     "date"
