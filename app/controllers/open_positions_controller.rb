@@ -9,7 +9,7 @@ class OpenPositionsController < ApplicationController
     csv = OpenPositions.get(date)
 
     send_data csv,
-              type: 'text/csv; charset=utf-8; header=present',
+              type: 'text/csv; header=present',
               disposition: "attachment; filename=open_positions_#{date}.csv"
   end
 
