@@ -14,7 +14,7 @@ class OpenPositionsController < ApplicationController
   end
 
   def set_headers
-  	response.headers["Access-Control-Allow-Origin"] = "khataev.com"
+  	response.headers["Access-Control-Allow-Origin"] = "http://micexopen.khataev.com"
     # response.headers["Access-Control-Allow-Origin"] = "*"
   end
 end
