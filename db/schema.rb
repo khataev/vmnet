@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161109191409) do
+ActiveRecord::Schema.define(version: 20161126172232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,5 +31,12 @@ ActiveRecord::Schema.define(version: 20161109191409) do
   end
 
   add_index "rates_histories", ["date"], name: "index_rates_histories_on_date", using: :btree
+
+  create_table "spot_rates_histories", force: :cascade do |t|
+    t.date "date"
+    t.xml  "rates"
+  end
+
+  add_index "spot_rates_histories", ["date"], name: "index_spot_rates_histories_on_date", using: :btree
 
 end

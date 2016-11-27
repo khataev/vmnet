@@ -24,6 +24,9 @@ Rails.application.routes.draw do
       resource :rates do
         get :usd
       end
+      resource :spot_rates do
+        get :usdrub_tom
+      end
       resource :dollar_index do
         get :broad
       end      
