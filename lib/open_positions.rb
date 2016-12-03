@@ -30,7 +30,7 @@ class OpenPositions
                 str << ["500", "MOEX Server Overloaded"]
             end
           else
-            csv and @@positions[key] = csv and PositionsHistory.create!(date: date, positions: csv)
+            csv and CSV.parse(csv).size > 1 and @@positions[key] = csv and PositionsHistory.create!(date: date, positions: csv)
           end
         end     
         csv
