@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -16,27 +15,24 @@ ActiveRecord::Schema.define(version: 20161126172232) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "positions_histories", force: :cascade do |t|
+  create_table "positions_histories", id: :serial, force: :cascade do |t|
     t.date "date"
     t.text "positions"
+    t.index ["date"], name: "index_positions_histories_on_date"
   end
 
-  add_index "positions_histories", ["date"], name: "index_positions_histories_on_date", using: :btree
-
-  create_table "rates_histories", force: :cascade do |t|
-    t.date     "date"
-    t.xml      "rates"
+  create_table "rates_histories", id: :serial, force: :cascade do |t|
+    t.date "date"
+    t.xml "rates"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["date"], name: "index_rates_histories_on_date"
   end
 
-  add_index "rates_histories", ["date"], name: "index_rates_histories_on_date", using: :btree
-
-  create_table "spot_rates_histories", force: :cascade do |t|
+  create_table "spot_rates_histories", id: :serial, force: :cascade do |t|
     t.date "date"
-    t.xml  "rates"
+    t.xml "rates"
+    t.index ["date"], name: "index_spot_rates_histories_on_date"
   end
-
-  add_index "spot_rates_histories", ["date"], name: "index_spot_rates_histories_on_date", using: :btree
 
 end

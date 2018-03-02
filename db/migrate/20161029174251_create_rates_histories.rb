@@ -1,4 +1,4 @@
-class CreateRatesHistories < ActiveRecord::Migration
+class CreateRatesHistories < ActiveRecord::Migration[4.2]
   def change
     create_table :rates_histories do |t|
       t.date :date

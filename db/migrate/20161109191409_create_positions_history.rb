@@ -1,4 +1,4 @@
-class CreatePositionsHistory < ActiveRecord::Migration
+class CreatePositionsHistory < ActiveRecord::Migration[4.2]
   def change
     create_table :positions_histories do |t|
       t.date :date
