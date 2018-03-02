@@ -6,7 +6,7 @@ class OpenPositionsController < ApplicationController
   def show
   	date_format = '%Y%m%d'
     date = params[:date].nil? ? DateTime.now.to_date : Date.strptime(params[:date], date_format)
-    csv = OpenPositions.get(date)
+    csv = ::OpenPositions.get(date)
 
     send_data csv,
               type: 'text/csv; charset=utf-8; header=present',
