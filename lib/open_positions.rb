@@ -7,7 +7,7 @@ class OpenPositions
     def self.get_req(date)
       # TODO: Refactor date conversion, multiple date_format
       date = date.strftime(@@date_format)
-        baseurl = "http://moex.com/ru/derivatives/open-positions-csv.aspx?d=#{date}&t=1"
+        baseurl = "https://moex.com/ru/derivatives/open-positions-csv.aspx?d=#{date}&t=1"
         open(baseurl).read
     end
 
