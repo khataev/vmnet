@@ -10,7 +10,7 @@ class SpotUsd
   def rate_req_period(from, till)
     begin
       query = URI.encode_www_form from: from.strftime('%Y-%m-%d'), till: till.strftime('%Y-%m-%d')
-      baseurl = 'http://www.moex.com/iss/history/engines/currency/markets/selt/boards/CETS/securities/USD000UTSTOM.xml'  
+      baseurl = 'https://www.moex.com/iss/history/engines/currency/markets/selt/boards/CETS/securities/USD000UTSTOM.xml'
       address = URI("#{baseurl}?#{query}")
 
       doc = Nokogiri::XML(open(address))
